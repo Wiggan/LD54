@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5uklqnhk3bgi"]
+
+[ext_resource type="PackedScene" uid="uid://cv3y1p3l5g4is" path="res://levels/building_blocks/base_pillar.tscn" id="1_ce8ab"]
+[ext_resource type="PackedScene" uid="uid://df7qop8s4rwvh" path="res://levels/building_blocks/hiding_place.tscn" id="2_30cfp"]
+
+[node name="BasePillar" instance=ExtResource("1_ce8ab")]
+
+[node name="HidingPlace" parent="." index="4" instance=ExtResource("2_30cfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04099, 0, -0.0496691)
+
+[node name="HidingPlace2" parent="." index="5" instance=ExtResource("2_30cfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008003, 0, -0.969716)
+
+[node name="HidingPlace3" parent="." index="6" instance=ExtResource("2_30cfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00798655, 0, 1.05337)
+
+[node name="HidingPlace4" parent="." index="7" instance=ExtResource("2_30cfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.06227, 0, 0.0101912)

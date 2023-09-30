@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://df7qop8s4rwvh"]
+
+[ext_resource type="Script" path="res://levels/building_blocks/hiding_place.gd" id="1_5f3sv"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b127g"]
+
+[node name="HidingPlace" type="Node3D" groups=["HidingPlace"]]
+script = ExtResource("1_5f3sv")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
+modulate = Color(0, 0.937255, 1, 1)
+pixel_size = 0.6055
+axis = 1
+texture = SubResource("PlaceholderTexture2D_b127g")

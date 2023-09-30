@@ -1,0 +1,10 @@
+Wall types, bouncy/absorbing?
+Wall shapes
+Sounds for moving, charging, impact, wall bounce
+Extra impact powerup spawning randomly
+Level transitions
+Wall bounce sprite animation
+Win/Lose round sounds
+BGM
+Navigation
+Death condition

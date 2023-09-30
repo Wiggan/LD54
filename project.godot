@@ -129,4 +129,3 @@ ui_previous_tab={
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
-anti_aliasing/quality/screen_space_aa=1

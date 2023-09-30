@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://df1mgrc77wowj"]
+
+[ext_resource type="Script" path="res://actors/ai_controller.gd" id="1_xuc61"]
+[ext_resource type="PackedScene" uid="uid://bir173lx67tx4" path="res://actors/pawn.tscn" id="2_fp2fs"]
+[ext_resource type="Material" uid="uid://b03rvj7kak7i3" path="res://actors/enemy_overlay_material.tres" id="3_wwiq5"]
+
+[node name="AIController" type="Node3D"]
+script = ExtResource("1_xuc61")
+
+[node name="Pawn" parent="." instance=ExtResource("2_fp2fs")]
+top_level = false
+collision_layer = 257
+overlay = ExtResource("3_wwiq5")
+
+[node name="RayCast3D" type="RayCast3D" parent="Pawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.282573, 0)
+target_position = Vector3(0, 0, -100)
+collision_mask = 3
+
+[node name="Label3D" type="Label3D" parent="Pawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40722, 0)
+visible = false
+pixel_size = 0.009
+billboard = 1
+text = "None"
+font_size = 222
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="released_attack" from="Pawn" to="." method="_on_pawn_released_attack"]

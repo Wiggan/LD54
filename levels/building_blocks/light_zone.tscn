@@ -5,7 +5,7 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fq4lk"]
 radius = 20.0
 
-[node name="LightZone" type="Node3D"]
+[node name="LightZone" type="Node3D" groups=["Light"]]
 script = ExtResource("1_4xtdm")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]

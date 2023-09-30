@@ -17,6 +17,7 @@ func _unhandled_input(event):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var cursor_position = get_cursor_position()
+	cursor.global_position = cursor_position
 	if controlled_pawn:
 		controlled_pawn.target = cursor_position
 	
