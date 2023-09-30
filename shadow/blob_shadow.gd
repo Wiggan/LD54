@@ -7,3 +7,6 @@ extends Node3D
 		size = value
 		if is_instance_valid(sprite_3d):
 			sprite_3d.scale = Vector3.ONE * size
+
+func _ready():
+	sprite_3d.scale = Vector3.ONE * size

@@ -27,6 +27,11 @@ signal died
 		directional_stuff.rotation *= Vector3(0, 1, 0)
 @export var overlay: StandardMaterial3D
 @export var directional_force = 9
+@export var hp = 100.0:
+	set(value):
+		hp = value
+		if is_instance_valid(health):
+			health.max_health = value
 
 var charging = false
 var charge_time = 0.0
@@ -52,6 +57,7 @@ func stop_charging():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	health.max_health = hp
 	mesh_instance_3d.material_overlay = overlay
 	moving_sfx.seek(randf_range(0, moving_sfx.stream.get_length()))
 
@@ -72,7 +78,7 @@ func _physics_process(_delta):
 	apply_central_force(force)
 
 func _on_health_damage_taken(new_health):
-	health_bar.reduce_to(new_health)
+	health_bar.reduce_to(new_health / health.max_health * 100)
 
 func _on_health_died():
 	var tween = create_tween()
@@ -82,7 +88,7 @@ func _on_health_died():
 	died.emit()
 	
 func _on_health_healed(new_health):
-	health_bar.add_to(new_health)
+	health_bar.add_to(new_health / health.max_health * 100)
 
 
 func _on_body_entered(body):

@@ -27,7 +27,6 @@ text = "None"
 font_size = 222
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Pawn"]
-debug_enabled = true
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 2.0

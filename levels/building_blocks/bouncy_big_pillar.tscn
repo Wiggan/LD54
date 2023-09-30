@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bn3t0853em3gn"]
+
+[ext_resource type="PackedScene" uid="uid://b5uklqnhk3bgi" path="res://levels/building_blocks/bouncy_small_pillar.tscn" id="1_xf3sk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stx55"]
+albedo_color = Color(0.266667, 0.266667, 0.211765, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_viphp"]
+material = SubResource("StandardMaterial3D_stx55")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 3.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_effjf"]
+height = 3.0
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7gd8"]
+resource_local_to_scene = true
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ohx8o"]
+top_radius = 1.1
+bottom_radius = 1.1
+height = 1.0
+
+[node name="BouncyBigPillar" instance=ExtResource("1_xf3sk")]
+
+[node name="MeshInstance3D2" parent="." index="1"]
+mesh = SubResource("CylinderMesh_viphp")
+
+[node name="shadow" parent="." index="2"]
+shadow_width = 1.915
+
+[node name="CollisionShape3D" parent="." index="8"]
+shape = SubResource("CylinderShape3D_effjf")
+
+[node name="Bumper" parent="." index="9"]
+material_overlay = SubResource("StandardMaterial3D_y7gd8")
+mesh = SubResource("CylinderMesh_ohx8o")

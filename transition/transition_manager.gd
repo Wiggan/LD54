@@ -1,9 +1,9 @@
 extends Control
 
-@onready var transition_animations = $Black/TransitionAnimations
 @onready var menu_animation = $Menu/MenuAnimation
 @onready var menu = $Menu
 @onready var background_level_loader = preload("res://transition/background_level_loader.tscn")
+@onready var black = $Black
 
 var callback: Callable
 
@@ -20,19 +20,9 @@ func show_menu():
 	menu_animation.play("show")
 	AudioManager.play_song(AudioManager.Song.MENU)
 
-func load_level(level):
-	var loader = background_level_loader.instantiate()
-	loader.scene_to_load = level
-	add_child(loader)
-
 func fade_and_call(callable):
-	callback = callable
-	transition_animations.play("FadeToBlackAndCall")
+	var fade_tween = create_tween()
+	fade_tween.tween_property(black.material, "shader_parameter/lod", 10.0, 1.5)
+	fade_tween.tween_callback(callable)
+	fade_tween.tween_property(black.material, "shader_parameter/lod", 0.0, 0.5)
 	
-func fade_in():
-	transition_animations.play("FadeIn")
-	
-
-func call_callback():
-	if callback:
-		callback.call()

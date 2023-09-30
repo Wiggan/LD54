@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bixepwj6lt4u0"]
+
+[ext_resource type="PackedScene" uid="uid://df1mgrc77wowj" path="res://actors/ai_controller.tscn" id="1_0tf65"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5o1r1"]
+albedo_color = Color(0.611765, 0.52549, 0.294118, 0.521569)
+
+[node name="EasyEnemy1" instance=ExtResource("1_0tf65")]
+
+[node name="Pawn" parent="." index="0"]
+overlay = SubResource("StandardMaterial3D_5o1r1")
+directional_force = 4
+hp = 20.0
