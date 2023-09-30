@@ -6,7 +6,7 @@ var cursor_offset
 func _ready():
 	GameManager.connect("paused", show_cursor)
 	GameManager.connect("unpaused", hide_cursor)
-	hide_cursor()
+	show_cursor()
 	cursor_offset = ProjectSettings.get_setting("display/mouse_cursor/custom_image_hotspot")
 	
 func show_cursor():

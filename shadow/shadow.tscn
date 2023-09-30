@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://noxcijduvvct"]
+
+[ext_resource type="Script" path="res://shadow/shadow.gd" id="1_tl78t"]
+
+[sub_resource type="Gradient" id="Gradient_1f4j0"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.253298, 1)
+colors = PackedColorArray(0, 0, 0, 0.878431, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lhqfy"]
+gradient = SubResource("Gradient_1f4j0")
+width = 14
+fill_from = Vector2(0.5, 0.86)
+fill_to = Vector2(0.5, 0)
+
+[node name="shadow" type="Node3D" groups=["DirectionalShadow"]]
+script = ExtResource("1_tl78t")
+light_position = Vector3(1, 1, 0.445)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+offset = Vector2(0, 32)
+axis = 1
+double_sided = false
+texture_filter = 0
+texture = SubResource("GradientTexture2D_lhqfy")
+region_rect = Rect2(0, 0, 26, 54)

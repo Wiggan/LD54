@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Template"
+config/name="LD54"
 run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
@@ -24,14 +24,14 @@ Transition="*res://transition/transition.tscn"
 Cursor="*res://cursor/cursor.tscn"
 AudioManager="*res://audio/audio_manager.tscn"
 ShaderCacher="*res://particle_stuff/shader_cacher.gd"
-SmartQueuefree="*res://pool/smart_queuefree.gd"
-InstancePool="*res://pool/instance_pool.tscn"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/stretch/mode="canvas_items"
+window/size/viewport_width=480
+window/size/viewport_height=270
+window/size/window_width_override=1440
+window/size/window_height_override=810
+window/stretch/mode="viewport"
 
 [editor]
 
@@ -158,5 +158,5 @@ down={
 
 [rendering]
 
-scaling_3d/mode=1
+renderer/rendering_method="gl_compatibility"
 anti_aliasing/quality/screen_space_aa=1

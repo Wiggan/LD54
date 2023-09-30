@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtl20wwoutcfq"]
+
+[ext_resource type="Script" path="res://shadow/blob_shadow.gd" id="1_8k27f"]
+
+[sub_resource type="Gradient" id="Gradient_anold"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.253298, 1)
+colors = PackedColorArray(0, 0, 0, 0.878431, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pssaa"]
+gradient = SubResource("Gradient_anold")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="blob_shadow" type="Node3D"]
+script = ExtResource("1_8k27f")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+axis = 1
+texture = SubResource("GradientTexture2D_pssaa")
