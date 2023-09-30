@@ -5,7 +5,5 @@ extends Node3D
 @export var size = 1.0:
 	set(value):
 		size = value
-		call_deferred("update_size")
-
-func update_size():
-	sprite_3d.scale = Vector3.ONE * size
+		if is_instance_valid(sprite_3d):
+			sprite_3d.scale = Vector3.ONE * size

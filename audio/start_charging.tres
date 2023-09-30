@@ -1,0 +1,6 @@
+[gd_resource type="AudioStreamRandomizer"]
+[ext_resource type="AudioStream" path="res://audio/start_charging.wav" id="66be1e4dc65438925c02be86060ab1526ff52a99"]
+[resource]
+streams_count = 1
+stream_0/stream = ExtResource("66be1e4dc65438925c02be86060ab1526ff52a99")
+stream_0/weight = 1.0

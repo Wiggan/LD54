@@ -35,7 +35,7 @@ func heal(amount):
 	if alive:
 		health = clamp(health + amount, 0, max_health)
 
-func take_damage(amount: float, status_effects: Array[Enums.StatusEffect], _from: Vector3, _instigator):
+func take_damage(amount: float):
 	print("taking damage: ", amount)
 	if not alive:
 		return
@@ -44,13 +44,8 @@ func take_damage(amount: float, status_effects: Array[Enums.StatusEffect], _from
 	health = _apply_damage(amount)
 	
 	if health == 0:
-		if _instigator and _instigator.has_method("on_enemy_killed"):
-			_instigator.on_enemy_killed()
 		_die()
 		return
-	
-	status_effects = _modify_status_effects(status_effects)
-	_apply_status_effects(status_effects)
 
 ## Apply modifiers such as ethereal, invulnerable etc
 func _pre_damage(amount):

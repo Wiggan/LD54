@@ -3,6 +3,7 @@ extends Node3D
 @onready var ray_cast_3d = $Pawn/RayCast3D
 @onready var label_3d = $Pawn/Label3D
 @onready var cooldown = $Cooldown
+@onready var navagent = $Pawn/NavigationAgent3D
 
 
 const UPDATE_INTERVAL = 7
@@ -63,33 +64,33 @@ func _get_ray_hits_player():
 func _get_wants_to_change_state():
 	if state == State.Attacking:
 		if not pawn.charging and speed < ATTACK_OVER_SPEED:
-			print("Attack is over, change state")
+			#print("Attack is over, change state")
 			return true
 			
 	if (state != State.Attacking and 
 		state != State.Defending and 
 		speed > DEFEND_SPEED_THRESHOLD):
-			print("Going very fast, not defending, change state")
+			#print("Going very fast, not defending, change state")
 			return true
 		
 	if (state != State.AvoidingDarkness and 
 		state != State.Defending and
 		distance_from_light > light_radius - DARKNESS_MARGIN):
-		print("Too close to darkness, change state")
+		#print("Too close to darkness, change state")
 		return true
 		
 	if ((state == State.AvoidingDarkness or 
 		state == State.Defending) and
 		distance_from_light < DARKNESS_MARGIN):
-		print("Too safe, change state")
+		#print("Too safe, change state")
 		return true
 		
 	if state != State.Attacking and player.global_position.distance_to(light.global_position) > light_radius - DARKNESS_MARGIN:
-		print("Good chance to attack player, change state")
+		#print("Good chance to attack player, change state")
 		return true
 		
 	if time_spent_in_state > TIME_SPENT_IN_STATE_THRESHOLD:
-		print("Too long in same state, change state")
+		#print("Too long in same state, change state")
 		return true
 
 func _pick_new_state():
@@ -110,7 +111,7 @@ func _pick_new_state():
 		if player.global_position.distance_to(light.global_position) > light_radius - DARKNESS_MARGIN:
 			return State.Attacking
 		
-	print("Picking random state")
+	#print("Picking random state")
 	return State.values().pick_random()
 
 func _change_state(new_state):
@@ -138,17 +139,19 @@ func _update_state():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	frames_since_last_update += 1
-	time_spent_in_state += delta
-	if frames_since_last_update >= UPDATE_INTERVAL:
-		frames_since_last_update = 0
-		_update_state()
-		process_state[state].call()
+	if is_instance_valid(pawn) and pawn.health.alive:
+		frames_since_last_update += 1
+		time_spent_in_state += delta
+		if frames_since_last_update >= UPDATE_INTERVAL:
+			frames_since_last_update = 0
+			_update_state()
+			process_state[state].call()
 	
 func enter_avoiding_darkness():
-	pawn.target = light.global_position
+	process_avoiding_darkness()
 func process_avoiding_darkness():
-	pawn.target = light.global_position
+	navagent.target_position = light.global_position
+	pawn.target = navagent.get_next_path_position()
 
 func enter_attacking():
 	pawn.start_charging()
@@ -158,25 +161,29 @@ func process_attacking():
 	if (pawn.charging and
 		pawn.charge_time > 0.6 and 
 		distance_from_player < ATTACK_TRIGGER_DISTANCE):
-		print("Releasing attack!")
+		#print("Releasing attack!")
 		pawn.stop_charging()
 	
 func enter_defending():
 	pawn.start_charging()
 	hiding_place = _find_hiding_place()
 	if not hiding_place:
-		print("Found no good hiding place")
+		#print("Found no good hiding place")
 		hiding_place = light.global_position
+	process_defending()
 func process_defending():
-	pawn.target = light.global_position
+	navagent.target_position = light.global_position
+	pawn.target = navagent.get_next_path_position()
 	
 func enter_hiding():
 	hiding_place = _find_hiding_place()
 	if not hiding_place:
-		print("Found no good hiding place")
+		#print("Found no good hiding place")
 		hiding_place = light.global_position
+	process_hiding()
 func process_hiding():
-	pawn.target = hiding_place
+	navagent.target_position = hiding_place
+	pawn.target = navagent.get_next_path_position()
 
 func _find_hiding_place():
 	var potential_hiding_places = get_tree().get_nodes_in_group("HidingPlace")
@@ -190,3 +197,7 @@ func _find_hiding_place():
 
 func _on_pawn_released_attack():
 	cooldown.start()
+
+
+func _on_pawn_died():
+	pass # Replace with function body.

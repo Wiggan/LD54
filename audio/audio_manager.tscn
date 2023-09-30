@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dt77qavjtbfmp"]
+[gd_scene load_steps=12 format=3 uid="uid://dt77qavjtbfmp"]
 
 [ext_resource type="Script" path="res://audio/audio_manager.gd" id="1_wltfe"]
 [ext_resource type="AudioStream" uid="uid://1s0hk0im2r3q" path="res://audio/focus_placeholder.wav" id="2_xof06"]
 [ext_resource type="AudioStream" uid="uid://mek3770t1mx1" path="res://audio/click_placeholder.wav" id="3_hk0dv"]
 [ext_resource type="AudioStream" uid="uid://jrj83g5tui2f" path="res://BGM/2023-07-31.mp3" id="4_kyhcx"]
 [ext_resource type="AudioStream" uid="uid://1iak481be8rf" path="res://BGM/2023-08-03.mp3" id="5_nqwlp"]
+[ext_resource type="AudioStream" uid="uid://bxnhi52sr2hme" path="res://audio/level_cleared.wav" id="6_2oq7f"]
+[ext_resource type="AudioStream" uid="uid://csjb7lmjdlj48" path="res://audio/level_lost.wav" id="7_441s1"]
 
 [sub_resource type="Animation" id="Animation_ki3h1"]
 length = 0.001
@@ -114,6 +116,14 @@ bus = &"BGM"
 libraries = {
 "": SubResource("AnimationLibrary_ow53j")
 }
+
+[node name="LevelCleared" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2oq7f")
+bus = &"SFX"
+
+[node name="LevelLost" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_441s1")
+bus = &"SFX"
 
 [connection signal="finished" from="BGM1" to="." method="_on_bgm_finished"]
 [connection signal="finished" from="BGM2" to="." method="_on_bgm_finished"]

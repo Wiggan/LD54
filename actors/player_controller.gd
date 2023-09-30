@@ -8,7 +8,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _unhandled_input(event):
-	if controlled_pawn:
+	if is_instance_valid(controlled_pawn):
 		if event.is_action_pressed("charge"):
 			controlled_pawn.start_charging()
 		elif event.is_action_released("charge"):
@@ -18,7 +18,7 @@ func _unhandled_input(event):
 func _process(_delta):
 	var cursor_position = get_cursor_position()
 	cursor.global_position = cursor_position
-	if controlled_pawn:
+	if is_instance_valid(controlled_pawn):
 		controlled_pawn.target = cursor_position
 	
 func get_cursor_position():

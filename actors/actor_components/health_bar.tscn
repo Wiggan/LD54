@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://x4sunh3i50k6"]
+
+[ext_resource type="Script" path="res://actors/actor_components/health_bar.gd" id="1_cgu7j"]
+
+[sub_resource type="Gradient" id="Gradient_02vtr"]
+colors = PackedColorArray(0.0156863, 0.0156863, 0.0156863, 0.298039, 0.137255, 0.137255, 0.137255, 0.415686)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5r7s1"]
+gradient = SubResource("Gradient_02vtr")
+width = 100
+height = 10
+
+[sub_resource type="Gradient" id="Gradient_tibj1"]
+colors = PackedColorArray(1, 0.892062, 0.891213, 1, 1, 0.77976, 0.784085, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ptlkj"]
+gradient = SubResource("Gradient_tibj1")
+width = 100
+height = 10
+
+[sub_resource type="Gradient" id="Gradient_taou0"]
+colors = PackedColorArray(0.132082, 0.30899, 0, 1, 0.327611, 0.736595, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_siyg7"]
+gradient = SubResource("Gradient_taou0")
+width = 100
+height = 10
+
+[node name="health_bar" type="Sprite3D"]
+centered = false
+offset = Vector2(-50, 0)
+billboard = 1
+texture = SubResource("GradientTexture2D_5r7s1")
+script = ExtResource("1_cgu7j")
+
+[node name="shadow" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00223154)
+sorting_offset = 0.05
+centered = false
+offset = Vector2(-50, 0)
+billboard = 1
+no_depth_test = true
+texture = SubResource("GradientTexture2D_ptlkj")
+region_enabled = true
+region_rect = Rect2(0, 0, 100, 10)
+
+[node name="progress" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00454199)
+sorting_offset = 0.1
+centered = false
+offset = Vector2(-50, 0)
+billboard = 1
+no_depth_test = true
+texture = SubResource("GradientTexture2D_siyg7")
+region_enabled = true

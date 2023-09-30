@@ -7,10 +7,11 @@
 [node name="AIController" type="Node3D"]
 script = ExtResource("1_xuc61")
 
-[node name="Pawn" parent="." instance=ExtResource("2_fp2fs")]
+[node name="Pawn" parent="." groups=["EnemyPawn"] instance=ExtResource("2_fp2fs")]
 top_level = false
 collision_layer = 257
 overlay = ExtResource("3_wwiq5")
+directional_force = 6
 
 [node name="RayCast3D" type="RayCast3D" parent="Pawn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.282573, 0)
@@ -25,7 +26,12 @@ billboard = 1
 text = "None"
 font_size = 222
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Pawn"]
+debug_enabled = true
+
 [node name="Cooldown" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
+[connection signal="died" from="Pawn" to="." method="_on_pawn_died"]
 [connection signal="released_attack" from="Pawn" to="." method="_on_pawn_released_attack"]

@@ -1,0 +1,6 @@
+[gd_resource type="AudioStreamRandomizer"]
+[ext_resource type="AudioStream" path="res://audio/bounce.wav" id="5d7393e658320ea8add51c797a62ee131b9f626a"]
+[resource]
+streams_count = 1
+stream_0/stream = ExtResource("5d7393e658320ea8add51c797a62ee131b9f626a")
+stream_0/weight = 1.0

@@ -5,12 +5,11 @@ extends Node3D
 @export var light_position = Vector3.ONE:
 	set(value):
 		light_position = value
-		call_deferred("update_light_position")
+		if is_instance_valid(sprite_3d):
+			sprite_3d.look_at(light_position, Vector3.UP, true)
+			sprite_3d.rotation *= Vector3(0, 1, 0)
 
 func _ready():
-	update_light_position()
-
-func update_light_position():
-	sprite_3d.look_at(light_position, Vector3.UP, true)
-	sprite_3d.rotation *= Vector3(0, 1, 0)
+	light_position  = Vector3.ONE
+	
 

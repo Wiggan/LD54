@@ -3,6 +3,8 @@ extends Node
 @onready var button_click = $ButtonClick
 @onready var bgm_1 = $BGM1
 @onready var bgm_2 = $BGM2
+@onready var level_cleared = $LevelCleared
+@onready var level_lost = $LevelLost
 
 enum Song {
 	MENU,
