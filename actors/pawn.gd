@@ -6,7 +6,7 @@ const MAX_IMPULSE = 7
 
 signal released_attack
 signal died
-
+@onready var explosion_scene = preload("res://actors/actor_components/explosion.tscn")
 @onready var directional_stuff = $DirectionalStuff
 @onready var charge_indicator = $DirectionalStuff/ChargeIndicator
 @onready var mesh_instance_3d = $MeshInstance3D
@@ -66,7 +66,7 @@ func _process(delta):
 	_update_moving_sfx()
 	if charging:
 		charge_time = minf(charge_time + delta, MAX_CHARGE_TIME)
-		charge_indicator.scale = Vector3.ONE * charge_time
+		charge_indicator.scale = Vector3(1, 1, charge_time)
 
 func _update_moving_sfx():
 	moving_sfx.volume_db = lerp(-25, -10, linear_velocity.length()/7)
@@ -81,9 +81,13 @@ func _on_health_damage_taken(new_health):
 	health_bar.reduce_to(new_health / health.max_health * 100)
 
 func _on_health_died():
+	var explosion = explosion_scene.instantiate()
+	explosion.emitting = true
+	explosion.set_deferred("global_position", global_position)
+	add_sibling(explosion)
+	
 	var tween = create_tween()
-	tween.tween_property(mesh_instance_3d, "transparency", 1, 1)
-	tween.tween_callback(queue_free).set_delay(2)
+	tween.tween_callback(queue_free).set_delay(0.5)
 	health_bar.reduce_to(0)
 	died.emit()
 	

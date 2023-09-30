@@ -139,7 +139,7 @@ func _update_state():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_instance_valid(pawn) and pawn.health.alive:
+	if is_instance_valid(player) and is_instance_valid(pawn) and pawn.health.alive:
 		frames_since_last_update += 1
 		time_spent_in_state += delta
 		if frames_since_last_update >= UPDATE_INTERVAL:

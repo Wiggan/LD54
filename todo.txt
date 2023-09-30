@@ -2,6 +2,6 @@ Extra impact powerup spawning randomly
 BGM
 Pick an upgrade upon failure, to reduce frustration?
 Mood color indicator?
-Materials, shiny pawns?
 Some in game tutorials
 floor boosters (arrow in the ground giving an impulse in that direction)
+Fix death better, explosion

@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm35yp80dvsiv"]
+
+[ext_resource type="AudioStream" path="res://audio/explosion.tres" id="1_et1r4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5707l"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_lshvo"]
+material = SubResource("StandardMaterial3D_5707l")
+
+[sub_resource type="Curve" id="Curve_w5rhg"]
+_data = [Vector2(0.263889, 0.557895), 0.0, -0.152853, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_gkv3f"]
+offsets = PackedFloat32Array(0, 0.361468, 0.612844, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.101961, 0, 0.764706, 0.270222, 0.270222, 0.270222, 0.462745, 0.227451, 0.227451, 0.227451, 0)
+
+[node name="explosion" type="CPUParticles3D"]
+emitting = false
+amount = 25
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+mesh = SubResource("BoxMesh_lshvo")
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(0, 1, 0)
+spread = 66.89
+gravity = Vector3(0, 6, 0)
+initial_velocity_min = 5.2
+initial_velocity_max = 9.55
+angular_velocity_min = -29.19
+angular_velocity_max = 29.19
+damping_min = 8.484
+damping_max = 10.511
+scale_amount_max = 1.9
+scale_amount_curve = SubResource("Curve_w5rhg")
+color_ramp = SubResource("Gradient_gkv3f")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_et1r4")
+autoplay = true
+bus = &"SFX"

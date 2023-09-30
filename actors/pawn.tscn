@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bir173lx67tx4"]
+[gd_scene load_steps=14 format=3 uid="uid://bir173lx67tx4"]
 
 [ext_resource type="Script" path="res://actors/pawn.gd" id="1_n50vj"]
 [ext_resource type="PackedScene" uid="uid://dtl20wwoutcfq" path="res://shadow/blob_shadow.tscn" id="1_odkcb"]
 [ext_resource type="PhysicsMaterial" uid="uid://dod6qybgcylci" path="res://actors/pawn_physics_material.tres" id="1_xvwwb"]
+[ext_resource type="Texture2D" uid="uid://cuo0i0ehg50s8" path="res://actors/actor_components/direction_indicator.png" id="4_07trd"]
 [ext_resource type="PackedScene" uid="uid://bwrm4ih3h6oeh" path="res://actors/actor_components/health.tscn" id="4_kuddt"]
 [ext_resource type="PackedScene" uid="uid://x4sunh3i50k6" path="res://actors/actor_components/health_bar.tscn" id="5_k2f5n"]
 [ext_resource type="AudioStream" uid="uid://ureabow5b8sm" path="res://audio/move.wav" id="6_yxg4n"]
@@ -14,6 +15,7 @@
 height = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4mi6"]
+transparency = 1
 albedo_color = Color(0.611765, 0.611765, 0.611765, 1)
 metallic = 0.68
 metallic_specular = 0.55
@@ -21,12 +23,6 @@ roughness = 0.33
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_mfwqq"]
 height = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mdpm2"]
-size = Vector2(42, 125)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cjy0v"]
-size = Vector2(42, 125)
 
 [node name="pawn" type="RigidBody3D" groups=["Pawns"]]
 top_level = true
@@ -55,19 +51,19 @@ size = 2.69
 [node name="DirectionalStuff" type="Node3D" parent="."]
 
 [node name="ForwardIndicator" type="Sprite3D" parent="DirectionalStuff"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.955972)
-modulate = Color(1, 1, 1, 0.67451)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.811865)
+modulate = Color(1, 0.556863, 0, 1)
 pixel_size = 0.0085
 axis = 1
-texture = SubResource("PlaceholderTexture2D_mdpm2")
+texture = ExtResource("4_07trd")
 
 [node name="ChargeIndicator" type="Sprite3D" parent="DirectionalStuff"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.955972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045, -0.956)
 visible = false
 modulate = Color(0, 1, 1, 1)
 pixel_size = 0.0175
 axis = 1
-texture = SubResource("PlaceholderTexture2D_cjy0v")
+texture = ExtResource("4_07trd")
 
 [node name="Health" parent="." instance=ExtResource("4_kuddt")]
 

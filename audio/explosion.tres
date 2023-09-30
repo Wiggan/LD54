@@ -1,0 +1,6 @@
+[gd_resource type="AudioStreamRandomizer"]
+[ext_resource type="AudioStream" path="res://audio/explosion.wav" id="c2eba610706c00d1aeb20090d6f8c8870c477018"]
+[resource]
+streams_count = 1
+stream_0/stream = ExtResource("c2eba610706c00d1aeb20090d6f8c8870c477018")
+stream_0/weight = 1.0
