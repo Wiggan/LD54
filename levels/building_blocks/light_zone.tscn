@@ -9,7 +9,7 @@ radius = 20.0
 script = ExtResource("1_4xtdm")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 light_energy = 5.382
 light_indirect_energy = 0.0
 light_size = 20.0

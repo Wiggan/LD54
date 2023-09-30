@@ -12,6 +12,7 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	update_directional_shadows()
 	var step_size = start_radius / step_count
 	var tween = create_tween()
 	for i in range(step_count-1):
@@ -23,9 +24,6 @@ func _ready():
 func set_radius(radius):
 	omni_light_3d.omni_range = radius
 	collision_shape_3d.shape.radius = radius
-
-func _process(delta):
-	update_directional_shadows()
 
 func update_directional_shadows():
 	for shadow in get_tree().get_nodes_in_group("DirectionalShadow"):
