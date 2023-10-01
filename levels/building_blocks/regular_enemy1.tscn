@@ -7,3 +7,6 @@
 
 [node name="Pawn" parent="." index="0"]
 mesh = ExtResource("2_fclr4")
+directional_force = 10
+max_impulse = 6
+damping_on_charge = 0.3

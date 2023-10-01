@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b274jnlu0lovm"]
+
+[ext_resource type="PackedScene" uid="uid://df1mgrc77wowj" path="res://actors/ai_controller.tscn" id="1_snvv8"]
+[ext_resource type="ArrayMesh" uid="uid://dcj13jeh68jg2" path="res://actors/meshes/pawns_Tower.res" id="2_1doic"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_beuwy"]
+albedo_color = Color(0.282353, 0.0862745, 0.0901961, 1)
+
+[node name="RegularEnemy" instance=ExtResource("1_snvv8")]
+
+[node name="Pawn" parent="." index="0"]
+overlay = SubResource("StandardMaterial3D_beuwy")
+mesh = ExtResource("2_1doic")
+directional_force = 5
+max_impulse = 10
+damping_on_charge = 0.6
+hp = 250.0

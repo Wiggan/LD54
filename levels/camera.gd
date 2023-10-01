@@ -8,4 +8,4 @@ func _ready():
 	light.shrinked.connect(on_shrink)
 	
 func on_shrink():
-	create_tween().tween_property(self, "position", position + Vector3.FORWARD * 0.8, 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	create_tween().tween_property(self, "position", position + Vector3.FORWARD * 0.8+ Vector3.UP * 0.2, 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)

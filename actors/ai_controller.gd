@@ -193,12 +193,13 @@ func process_hiding():
 
 func _find_hiding_place():
 	var potential_hiding_places = get_tree().get_nodes_in_group("HidingPlace")
-	for i in range(10):
-		var potential_hiding_place = potential_hiding_places.pick_random()
-		ray_cast_3d.global_position = potential_hiding_place.global_position
-		if (not _get_ray_hits_player() and 
-			potential_hiding_place.global_position.distance_to(light.global_position) < light_radius):
-			return potential_hiding_place.global_position
+	if not potential_hiding_places.is_empty():
+		for i in range(10):
+			var potential_hiding_place = potential_hiding_places.pick_random()
+			ray_cast_3d.global_position = potential_hiding_place.global_position
+			if (not _get_ray_hits_player() and 
+				potential_hiding_place.global_position.distance_to(light.global_position) < light_radius):
+				return potential_hiding_place.global_position
 
 
 func _on_pawn_released_attack():

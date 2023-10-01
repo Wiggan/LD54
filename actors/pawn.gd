@@ -2,7 +2,6 @@ class_name Pawn
 extends RigidBody3D
 
 const MAX_CHARGE_TIME = 1.0
-const MAX_IMPULSE = 7
 
 signal collided_with_pawn
 signal released_attack
@@ -29,6 +28,8 @@ signal died
 @export var overlay: StandardMaterial3D
 @export var mesh: Mesh
 @export var directional_force = 9
+@export var max_impulse = 7
+@export var damping_on_charge = 0.4
 @export var hp = 100.0:
 	set(value):
 		hp = value
@@ -44,14 +45,14 @@ func start_charging():
 		charging = true
 		charge_time = 0.0
 		charge_indicator.visible = true
-		linear_damp = 0.5
+		linear_damp = damping_on_charge
 		start_charge_sfx.play()
 	
 func stop_charging():
 	if charging:
 		charging = false
 		charge_indicator.visible = false
-		var impulse = directional_stuff.transform * Vector3.FORWARD * charge_time * MAX_IMPULSE
+		var impulse = directional_stuff.transform * Vector3.FORWARD * charge_time * max_impulse
 		apply_central_impulse(impulse)
 		linear_damp = 0.1
 		released_attack.emit()
@@ -72,8 +73,8 @@ func _process(delta):
 		charge_indicator.scale = Vector3(1, 1, charge_time)
 
 func _update_moving_sfx():
-	moving_sfx.volume_db = lerp(-25, -10, linear_velocity.length()/7)
-	moving_sfx.pitch_scale = lerp(0.4, 1.4, linear_velocity.length()/7)
+	moving_sfx.volume_db = lerp(-18, -10, linear_velocity.length()/7)
+	moving_sfx.pitch_scale = lerp(0.6, 1.4, linear_velocity.length()/7)
 	
 
 func _physics_process(_delta):
