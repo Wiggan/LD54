@@ -73,7 +73,7 @@ func _process(delta):
 		charge_indicator.scale = Vector3(1, 1, charge_time)
 
 func _update_moving_sfx():
-	moving_sfx.volume_db = lerp(-18, -10, linear_velocity.length()/7)
+	moving_sfx.volume_db = lerp(-15, -10, linear_velocity.length()/6)
 	moving_sfx.pitch_scale = lerp(0.6, 1.4, linear_velocity.length()/7)
 	
 

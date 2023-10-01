@@ -26,3 +26,8 @@ top_level = false
 collision_layer = 3
 overlay = SubResource("StandardMaterial3D_ih0xd")
 mesh = ExtResource("3_lq2u6")
+
+[node name="StartChargeSFX" parent="pawn" index="7"]
+volume_db = 0.0
+
+[editable path="pawn"]
