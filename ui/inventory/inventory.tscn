@@ -1,35 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ch5nhx35f6sqe"]
+[gd_scene load_steps=6 format=3 uid="uid://ch5nhx35f6sqe"]
 
-[ext_resource type="Texture2D" uid="uid://mctnw50djjpj" path="res://ui/button_9patch.png" id="1_edav0"]
+[ext_resource type="Theme" uid="uid://dcyvtvwqjqgrh" path="res://ui/theme.tres" id="1_7t5lw"]
 [ext_resource type="Script" path="res://ui/inventory/inventory.gd" id="1_ssgm0"]
-[ext_resource type="Texture2D" uid="uid://bahin0qx4l8mt" path="res://ui/panel_9patch.png" id="2_6qq5g"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fevhc"]
-texture = ExtResource("1_edav0")
-texture_margin_left = 7.0
-texture_margin_top = 8.0
-texture_margin_right = 6.0
-texture_margin_bottom = 7.0
-region_rect = Rect2(0, 0, 47, 48)
+[sub_resource type="Gradient" id="Gradient_nsqom"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f7ur3"]
-texture = ExtResource("2_6qq5g")
-texture_margin_left = 26.0
-texture_margin_top = 26.0
-texture_margin_right = 25.0
-texture_margin_bottom = 25.0
-
-[sub_resource type="Theme" id="Theme_s5fpq"]
-Button/font_sizes/font_size = 14
-Button/styles/focus = SubResource("StyleBoxTexture_fevhc")
-Button/styles/hover = SubResource("StyleBoxTexture_fevhc")
-Button/styles/normal = SubResource("StyleBoxTexture_fevhc")
-Button/styles/pressed = SubResource("StyleBoxTexture_fevhc")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_f7ur3")
-
-[sub_resource type="Gradient" id="Gradient_mkupp"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_j5nwq"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nlx6h"]
 frequency = 0.022
 fractal_lacunarity = 19.155
 fractal_gain = 0.735
@@ -37,18 +13,19 @@ fractal_gain = 0.735
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8wt4r"]
 width = 128
 height = 128
-color_ramp = SubResource("Gradient_mkupp")
-noise = SubResource("FastNoiseLite_j5nwq")
+color_ramp = SubResource("Gradient_nsqom")
+noise = SubResource("FastNoiseLite_nlx6h")
 
 [node name="inventory" type="MarginContainer"]
 process_mode = 3
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = SubResource("Theme_s5fpq")
+theme = ExtResource("1_7t5lw")
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -92,7 +69,7 @@ layout_mode = 2
 text = "Available Upgrade"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CenterContainer"]
+[node name="Button" type="Button" parent="CenterContainer" groups=["Button"]]
 custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
 size_flags_horizontal = 4

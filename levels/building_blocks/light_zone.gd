@@ -12,6 +12,8 @@ extends Node3D
 const DAMAGE = 10
 signal shrinked
 
+@export var moving = false
+
 @export var radius = start_radius:
 	set(value):
 		radius = value
@@ -35,6 +37,9 @@ func update_directional_shadows():
 	for shadow in get_tree().get_nodes_in_group("DirectionalShadow"):
 		shadow.light_position = global_position
 
+func _process(_delta):
+	if moving: 
+		update_directional_shadows()
 
 func _on_hurt_timer_timeout():
 	for pawn in get_tree().get_nodes_in_group("Pawns"):

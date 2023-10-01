@@ -24,9 +24,9 @@ const HEALTH2 = {"name": "Health +2"}
 const HEALTH3 = {"name": "Health +3"}
 
 const UPGRADE_TABLES = {
-	12: [BOOST3, SPEED3, DEFENSE3, HEALTH3],
-	9: [BOOST3, SPEED3, DEFENSE3, HEALTH3, BOOST2, SPEED2, DEFENSE2, HEALTH2],
-	5: [BOOST2, SPEED2, DEFENSE2, HEALTH2],
+	8: [BOOST3, SPEED3, DEFENSE3, HEALTH3],
+	5: [BOOST3, SPEED3, DEFENSE3, HEALTH3, BOOST2, SPEED2, DEFENSE2, HEALTH2],
+	4: [BOOST2, SPEED2, DEFENSE2, HEALTH2],
 	2: [BOOST1, SPEED1, DEFENSE1, HEALTH1, BOOST2, SPEED2, DEFENSE2, HEALTH2],
 	0: [BOOST1, SPEED1, DEFENSE1, HEALTH1],
 }
@@ -73,7 +73,7 @@ func get_default_game_state():
 		"score": 0,
 		"rounds_played": 0,
 		"inventory": {
-			"slot1": {"name": "Boost +1"},
+			"slot1": null,
 			"slot2": null,
 			"slot3": null,
 			"offer": {"name": "Boost +2"},
@@ -88,10 +88,10 @@ func restart(reset=true):
 	else:
 		load_game()
 	state = State.Game
-	Cursor.hide_cursor()
-	#Transition.fade_and_call(Transition.load_level.bind(ProjectSettings["application/run/main_scene"]))
-	Transition.fade_and_call(Transition.load_level.bind("res://game/Levels/home/home.tscn"))
+	#Cursor.hide_cursor()
+	Transition.fade_and_call(get_tree().change_scene_to_file.bind("res://levels/level00.tscn"))
 	get_tree().paused = false
+	unpaused.emit()
 
 
 const FILE_NAME = "user://game.save"

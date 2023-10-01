@@ -6,12 +6,12 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aidg2"]
 albedo_color = Color(0.47451, 0, 0, 1)
 
-[node name="RegularEnemy" instance=ExtResource("1_7lxyj")]
+[node name="ToughEnemy1" instance=ExtResource("1_7lxyj")]
 
 [node name="Pawn" parent="." index="0"]
 overlay = SubResource("StandardMaterial3D_aidg2")
 mesh = ExtResource("2_kfg8f")
 directional_force = 5
 max_impulse = 5
-damping_on_charge = 0.6
+damping_on_charge = 2.0
 hp = 200.0

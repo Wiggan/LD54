@@ -4,8 +4,8 @@ var cursor_offset
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GameManager.connect("paused", show_cursor)
-	GameManager.connect("unpaused", hide_cursor)
+	#GameManager.connect("paused", show_cursor)
+	#GameManager.connect("unpaused", hide_cursor)
 	show_cursor()
 	cursor_offset = ProjectSettings.get_setting("display/mouse_cursor/custom_image_hotspot")
 	

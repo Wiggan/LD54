@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dt77qavjtbfmp"]
+[gd_scene load_steps=11 format=3 uid="uid://dt77qavjtbfmp"]
 
 [ext_resource type="Script" path="res://audio/audio_manager.gd" id="1_wltfe"]
-[ext_resource type="AudioStream" uid="uid://1s0hk0im2r3q" path="res://audio/focus_placeholder.wav" id="2_xof06"]
-[ext_resource type="AudioStream" uid="uid://mek3770t1mx1" path="res://audio/click_placeholder.wav" id="3_hk0dv"]
+[ext_resource type="AudioStream" uid="uid://bgh8tg45lr37e" path="res://audio/hit.tres" id="2_utrvy"]
 [ext_resource type="AudioStream" uid="uid://jrj83g5tui2f" path="res://BGM/2023-07-31.mp3" id="4_kyhcx"]
 [ext_resource type="AudioStream" uid="uid://1iak481be8rf" path="res://BGM/2023-08-03.mp3" id="5_nqwlp"]
 [ext_resource type="AudioStream" uid="uid://bxnhi52sr2hme" path="res://audio/level_cleared.wav" id="6_2oq7f"]
@@ -88,11 +87,14 @@ _data = {
 script = ExtResource("1_wltfe")
 
 [node name="ButtonHover" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_xof06")
+stream = ExtResource("2_utrvy")
+volume_db = -15.146
+pitch_scale = 0.69
 bus = &"SFX"
 
 [node name="ButtonClick" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_hk0dv")
+stream = ExtResource("2_utrvy")
+volume_db = -4.544
 bus = &"SFX"
 
 [node name="BGM1" type="AudioStreamPlayer" parent="."]

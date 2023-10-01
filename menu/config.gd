@@ -9,7 +9,7 @@ signal parameter_updated(parameter_name)
 
 # audio parameters
 var master_volume = 1
-var bgm_volume = 0.14
+var bgm_volume = 0.30
 var sfx_volume = 1
 
 # video parameters

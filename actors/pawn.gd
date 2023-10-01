@@ -29,7 +29,7 @@ signal died
 @export var mesh: Mesh
 @export var directional_force = 9
 @export var max_impulse = 7
-@export var damping_on_charge = 0.4
+@export var damping_on_charge = 0.8
 @export var hp = 100.0:
 	set(value):
 		hp = value
@@ -45,7 +45,7 @@ func start_charging():
 		charging = true
 		charge_time = 0.0
 		charge_indicator.visible = true
-		linear_damp = damping_on_charge
+		set_deferred("linear_damp", damping_on_charge)
 		start_charge_sfx.play()
 	
 func stop_charging():
@@ -54,7 +54,7 @@ func stop_charging():
 		charge_indicator.visible = false
 		var impulse = directional_stuff.transform * Vector3.FORWARD * charge_time * max_impulse
 		apply_central_impulse(impulse)
-		linear_damp = 0.1
+		set_deferred("linear_damp", 0.1)
 		released_attack.emit()
 		stop_charge_sfx.play()
 

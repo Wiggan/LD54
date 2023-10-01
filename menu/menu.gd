@@ -1,10 +1,8 @@
 extends VBoxContainer
 @onready var options = $"../SubMenus/Options"
 @onready var credits = $"../SubMenus/Credits"
-@onready var how_to_play = $"../SubMenus/HowToPlay"
 @onready var resume = $Resume
 @onready var start = $Start
-@onready var high_score = $"../SubMenus/HighScore"
 
 @onready var sub_menu_animator = $"../SubMenuAnimator"
 @onready var sub_menus = $"../SubMenus"
@@ -33,38 +31,18 @@ func _on_resume_pressed():
 func _on_start_pressed():
 	GameManager.restart(true)
 
-func _on_how_to_play_pressed():
-	options.visible = false
-	credits.visible = false
-	how_to_play.visible = true
-	high_score.visible = false
-	sub_menu_animator.play("show_submenu")
-
 func _on_options_pressed():
 	options.visible = true
 	credits.visible = false
-	how_to_play.visible = false
-	high_score.visible = false
 	sub_menu_animator.play("show_submenu")
 
 func _on_credits_pressed():
 	options.visible = false
 	credits.visible = true
-	how_to_play.visible = false
-	high_score.visible = false
-	sub_menu_animator.play("show_submenu")
-
-func _on_highscore_pressed():
-	options.visible = false
-	credits.visible = false
-	how_to_play.visible = false
-	high_score.visible = true
-	$"../SubMenus/HighScore/HighScore/VBoxContainer/HighScore".update_list()
 	sub_menu_animator.play("show_submenu")
 
 func _on_exit_pressed():
 	Transition.fade_and_call(get_tree().quit)
-
 
 func _on_back_button_pressed():
 	sub_menu_animator.play("hide_submenu")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnlidjvn1rc1l"]
+[gd_scene load_steps=7 format=3 uid="uid://bnlidjvn1rc1l"]
 
 [ext_resource type="PackedScene" uid="uid://bqd7psno8odwb" path="res://levels/base_level.tscn" id="1_q0p0g"]
 [ext_resource type="PackedScene" uid="uid://bn3t0853em3gn" path="res://levels/building_blocks/bouncy_big_pillar.tscn" id="2_kxkp3"]
-[ext_resource type="PackedScene" uid="uid://bixepwj6lt4u0" path="res://levels/building_blocks/easy_enemy_1.tscn" id="3_8m4yw"]
+[ext_resource type="PackedScene" uid="uid://b5e5wmicbd2bh" path="res://levels/building_blocks/regular_enemy1.tscn" id="4_ihk7m"]
 [ext_resource type="PackedScene" uid="uid://nfaa7bdiuueq" path="res://levels/building_blocks/easy_enemy_2.tscn" id="4_pr23g"]
+[ext_resource type="PackedScene" uid="uid://dwr1csqi5ieis" path="res://game/help_text.tscn" id="5_00bdv"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_46scu"]
 resource_local_to_scene = true
@@ -29,8 +30,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61225, 0, 9.07764)
 [node name="player_controller" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.18606)
 
-[node name="EasyEnemy1" parent="." index="4" instance=ExtResource("3_8m4yw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.82852, 0, -4.11024)
-
-[node name="EasyEnemy2" parent="." index="5" instance=ExtResource("4_pr23g")]
+[node name="EasyEnemy2" parent="." index="4" instance=ExtResource("4_pr23g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34057, 0, -4.30436)
+
+[node name="RegularEnemy" parent="." index="7" instance=ExtResource("4_ihk7m")]
+
+[node name="Pawn" parent="RegularEnemy" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.44904, 0, -5.38024)
+
+[node name="help_text" parent="RegularEnemy/Pawn" index="13" instance=ExtResource("5_00bdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.28159, 0)
+text = "This enemy type is faster!
+"
+
+[connection signal="collided_with_pawn" from="RegularEnemy/Pawn" to="RegularEnemy/Pawn/help_text" method="fade" flags=6]
+
+[editable path="RegularEnemy"]

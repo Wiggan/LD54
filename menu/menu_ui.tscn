@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://beqa0xujc2w2f"]
+[gd_scene load_steps=12 format=3 uid="uid://beqa0xujc2w2f"]
 
+[ext_resource type="Theme" uid="uid://dcyvtvwqjqgrh" path="res://ui/theme.tres" id="1_l8xfk"]
 [ext_resource type="Script" path="res://menu/menu.gd" id="2_3tjy3"]
 [ext_resource type="PackedScene" uid="uid://dkho6dqhdf3hw" path="res://menu/options.tscn" id="2_kuhxs"]
 [ext_resource type="PackedScene" uid="uid://roiivo44gftv" path="res://menu/credits.tscn" id="3_6jhuo"]
-[ext_resource type="PackedScene" uid="uid://bbndvhdy1dfel" path="res://menu/high_score.tscn" id="4_vmyfa"]
-[ext_resource type="PackedScene" uid="uid://41u3xkh4aa60" path="res://menu/how_to_play.tscn" id="5_msbyt"]
 
 [sub_resource type="Animation" id="Animation_os7k4"]
 length = 0.001
@@ -168,6 +167,19 @@ _data = {
 "show_submenu": SubResource("Animation_cemkc")
 }
 
+[sub_resource type="Gradient" id="Gradient_mkupp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j5nwq"]
+frequency = 0.022
+fractal_lacunarity = 19.155
+fractal_gain = 0.735
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m6to2"]
+width = 128
+height = 128
+color_ramp = SubResource("Gradient_mkupp")
+noise = SubResource("FastNoiseLite_j5nwq")
+
 [node name="MenuUI" type="Control"]
 process_mode = 2
 layout_mode = 3
@@ -177,19 +189,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_l8xfk")
 
 [node name="MenuItems" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(300, 500)
+custom_minimum_size = Vector2(300, 188.195)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -150.0
+offset_top = -118.0
+offset_right = 150.0
+offset_bottom = 118.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -203,14 +216,6 @@ text = "Resume"
 [node name="Start" type="Button" parent="MenuItems" groups=["Button"]]
 layout_mode = 2
 text = "New Game"
-
-[node name="Highscore" type="Button" parent="MenuItems" groups=["Button"]]
-layout_mode = 2
-text = "Leader Board"
-
-[node name="HowToPlay" type="Button" parent="MenuItems" groups=["Button"]]
-layout_mode = 2
-text = "How To Play"
 
 [node name="Options" type="Button" parent="MenuItems" groups=["Button"]]
 layout_mode = 2
@@ -229,36 +234,19 @@ text = "Exit"
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -15.5
-offset_right = 400.0
-offset_bottom = 15.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="Options" parent="SubMenus" instance=ExtResource("2_kuhxs")]
-visible = false
+custom_minimum_size = Vector2(400, 226.05)
 layout_mode = 2
 
 [node name="Credits" parent="SubMenus" instance=ExtResource("3_6jhuo")]
-custom_minimum_size = Vector2(800, 750)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="HighScore" parent="SubMenus" instance=ExtResource("4_vmyfa")]
-custom_minimum_size = Vector2(800, 750)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="HowToPlay" parent="SubMenus" instance=ExtResource("5_msbyt")]
-custom_minimum_size = Vector2(800, 750)
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -276,10 +264,14 @@ libraries = {
 "": SubResource("AnimationLibrary_72tno")
 }
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(244, 108)
+color = Color(0.643137, 0.643137, 0.643137, 1)
+texture = SubResource("NoiseTexture2D_m6to2")
+texture_scale = 4.4
+
 [connection signal="pressed" from="MenuItems/Resume" to="MenuItems" method="_on_resume_pressed"]
 [connection signal="pressed" from="MenuItems/Start" to="MenuItems" method="_on_start_pressed"]
-[connection signal="pressed" from="MenuItems/Highscore" to="MenuItems" method="_on_highscore_pressed"]
-[connection signal="pressed" from="MenuItems/HowToPlay" to="MenuItems" method="_on_how_to_play_pressed"]
 [connection signal="pressed" from="MenuItems/Options" to="MenuItems" method="_on_options_pressed"]
 [connection signal="pressed" from="MenuItems/Credits" to="MenuItems" method="_on_credits_pressed"]
 [connection signal="pressed" from="MenuItems/Exit" to="MenuItems" method="_on_exit_pressed"]

@@ -21,11 +21,11 @@ func _ready():
 			elif upgrade["name"] == "Speed +3":
 				controlled_pawn.directional_force += 3
 			elif upgrade["name"] == "Defense +1":
-				controlled_pawn.damping_on_charge += 0.1
-			elif upgrade["name"] == "Defense +2":
-				controlled_pawn.damping_on_charge += 0.2
-			elif upgrade["name"] == "Defense +3":
 				controlled_pawn.damping_on_charge += 0.3
+			elif upgrade["name"] == "Defense +2":
+				controlled_pawn.damping_on_charge += 0.5
+			elif upgrade["name"] == "Defense +3":
+				controlled_pawn.damping_on_charge += 0.8
 			elif upgrade["name"] == "Health +1":
 				controlled_pawn.hp += 20
 			elif upgrade["name"] == "Health +2":

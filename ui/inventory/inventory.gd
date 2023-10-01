@@ -16,10 +16,12 @@ func _ready():
 		else:
 			offer.add_child(new_slot)
 	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color.WHITE, 0.6).from(Color.TRANSPARENT)
+	tween.tween_property(self, "modulate", Color.WHITE, 1).from(Color.TRANSPARENT).set_delay(1)
+	tween.tween_callback(get_tree().set_pause.bind(true))
+	AudioManager.call_deferred("setup_buttons")
 
 func _on_button_pressed():
 	get_tree().paused = false
 	ok_button.disabled = true
 	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color.TRANSPARENT, 0.6).from(Color.WHITE)
+	tween.tween_property(self, "modulate", Color.TRANSPARENT, 0.4).from(Color.WHITE)

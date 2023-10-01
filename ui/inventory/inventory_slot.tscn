@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/inventory/inventory_slot.gd" id="1_2qyeo"]
 
-[node name="InventorySlot" type="Button"]
+[node name="InventorySlot" type="Button" groups=["Button"]]
 custom_minimum_size = Vector2(90, 40)
 size_flags_horizontal = 4
 size_flags_vertical = 0

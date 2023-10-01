@@ -57,11 +57,11 @@ collision_mask = 258
 script = ExtResource("1_mebe4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.456315, 0)
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 0, 0.456315, 0)
 shape = SubResource("BoxShape3D_ugccs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 1.74846e-07, 1, -4.37114e-08, 0, 7.64274e-15, 1.74846e-07, 1, 0, -0.307947, 0)
+transform = Transform3D(9.55343e-15, 2.18557e-07, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -2.18557e-07, 0, -0.307947, 0)
 material_overlay = SubResource("StandardMaterial3D_d2pix")
 mesh = SubResource("CylinderMesh_bu32t")
 
