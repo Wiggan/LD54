@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds340krhyy7he"]
+[gd_scene load_steps=7 format=3 uid="uid://ds340krhyy7he"]
 
 [ext_resource type="PackedScene" uid="uid://bqd7psno8odwb" path="res://levels/base_level.tscn" id="1_fjmny"]
 [ext_resource type="PackedScene" uid="uid://bixepwj6lt4u0" path="res://levels/building_blocks/easy_enemy_1.tscn" id="3_8cxst"]
+[ext_resource type="PackedScene" uid="uid://b5uklqnhk3bgi" path="res://levels/building_blocks/bouncy_small_pillar.tscn" id="3_dkwho"]
 [ext_resource type="PackedScene" uid="uid://du07w0fw4tnrk" path="res://levels/building_blocks/pillar.tscn" id="3_x65xv"]
+[ext_resource type="PackedScene" uid="uid://dwr1csqi5ieis" path="res://game/help_text.tscn" id="4_agpoq"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_46scu"]
 resource_local_to_scene = true
@@ -16,23 +18,33 @@ next_level = "res://levels/level02.tscn"
 [node name="NavigationRegion3D" parent="." index="0"]
 navigation_mesh = SubResource("NavigationMesh_46scu")
 
-[node name="BasePillar" parent="NavigationRegion3D" index="1" instance=ExtResource("3_x65xv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-
-[node name="BasePillar2" parent="NavigationRegion3D" index="2" instance=ExtResource("3_x65xv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-
-[node name="BasePillar3" parent="NavigationRegion3D" index="3" instance=ExtResource("3_x65xv")]
+[node name="BasePillar3" parent="NavigationRegion3D" index="1" instance=ExtResource("3_x65xv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
 
-[node name="BasePillar4" parent="NavigationRegion3D" index="4" instance=ExtResource("3_x65xv")]
+[node name="BasePillar4" parent="NavigationRegion3D" index="2" instance=ExtResource("3_x65xv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 2)
 
-[node name="BasePillar5" parent="NavigationRegion3D" index="5" instance=ExtResource("3_x65xv")]
+[node name="BasePillar5" parent="NavigationRegion3D" index="3" instance=ExtResource("3_x65xv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2)
+
+[node name="BouncySmallPillar" parent="NavigationRegion3D" index="4" instance=ExtResource("3_dkwho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="help_text" parent="NavigationRegion3D/BouncySmallPillar" index="10" instance=ExtResource("4_agpoq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.70365, 0)
+text = "This is a bouncy pillar.
+"
+
+[node name="BouncySmallPillar2" parent="NavigationRegion3D" index="5" instance=ExtResource("3_dkwho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 
 [node name="BasePillar6" parent="NavigationRegion3D" index="6" instance=ExtResource("3_x65xv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
 
 [node name="EasyEnemy1" parent="." index="4" instance=ExtResource("3_8cxst")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53134, 0, -14.9974)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53134, 0, -8.87693)
+
+[node name="EasyEnemy2" parent="." index="5" instance=ExtResource("3_8cxst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53134, 0, 10.2708)
+
+[connection signal="collided" from="NavigationRegion3D/BouncySmallPillar" to="NavigationRegion3D/BouncySmallPillar/help_text" method="fade" flags=6]

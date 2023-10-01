@@ -14,7 +14,7 @@ enum Song {
 
 const SONGS = {
 	Song.MENU: preload("res://BGM/2023-07-31.mp3"),
-	Song.GAME: preload("res://BGM/2023-08-03.mp3"),
+	Song.GAME: preload("res://BGM/2023-09-30.mp3"),
 	Song.SCORE: preload("res://BGM/2023-07-31.mp3"),
 }
 

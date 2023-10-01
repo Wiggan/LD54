@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://nfaa7bdiuueq"]
+[gd_scene load_steps=4 format=3 uid="uid://nfaa7bdiuueq"]
 
 [ext_resource type="PackedScene" uid="uid://df1mgrc77wowj" path="res://actors/ai_controller.tscn" id="1_fgpmy"]
+[ext_resource type="ArrayMesh" uid="uid://bbmk6nm1yvmhp" path="res://actors/meshes/pawns_Pawn.res" id="2_5gb5q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6uujw"]
-albedo_color = Color(0.835294, 0.376471, 0.196078, 0.521569)
+albedo_color = Color(0.835294, 0.376471, 0.196078, 1)
 
 [node name="EasyEnemy2" instance=ExtResource("1_fgpmy")]
 
 [node name="Pawn" parent="." index="0"]
 overlay = SubResource("StandardMaterial3D_6uujw")
+mesh = ExtResource("2_5gb5q")
 hp = 50.0

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwr1csqi5ieis"]
+
+[ext_resource type="Script" path="res://game/help_text.gd" id="1_iivbw"]
+
+[node name="help_text" type="Label3D"]
+billboard = 1
+no_depth_test = true
+text = "Testing
+"
+font_size = 242
+script = ExtResource("1_iivbw")

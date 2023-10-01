@@ -10,6 +10,7 @@ extends Node3D
 @export var step_delay = 3
 
 const DAMAGE = 10
+signal shrinked
 
 @export var radius = start_radius:
 	set(value):
@@ -20,6 +21,7 @@ const DAMAGE = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	radius = start_radius
 	update_directional_shadows()
 	var step_size = start_radius / step_count
 	var tween = create_tween()
@@ -27,6 +29,7 @@ func _ready():
 		tween.tween_property(self, "radius", 
 					start_radius - i * step_size,
 					step_duration).set_delay(step_delay).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK)
+		tween.tween_callback(emit_signal.bind("shrinked"))
 
 func update_directional_shadows():
 	for shadow in get_tree().get_nodes_in_group("DirectionalShadow"):

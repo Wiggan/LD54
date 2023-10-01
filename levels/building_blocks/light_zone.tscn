@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://levels/building_blocks/light_zone.gd" id="1_4xtdm"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fq4lk"]
+height = 12.3198
 radius = 20.0
 
 [node name="LightZone" type="Node3D" groups=["Light"]]
@@ -10,7 +11,7 @@ script = ExtResource("1_4xtdm")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
-light_energy = 5.382
+light_energy = 2.15
 light_indirect_energy = 0.0
 light_size = 20.0
 omni_range = 20.0

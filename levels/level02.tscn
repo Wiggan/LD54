@@ -12,12 +12,19 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Arr
 geometry_parsed_geometry_type = 1
 
 [node name="base_level" instance=ExtResource("1_q0p0g")]
+next_level = "res://levels/level03.tscn"
 
 [node name="NavigationRegion3D" parent="." index="0"]
 navigation_mesh = SubResource("NavigationMesh_46scu")
 
 [node name="BouncyBigPillar" parent="NavigationRegion3D" index="1" instance=ExtResource("2_kxkp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -1.5)
+
+[node name="BouncyBigPillar2" parent="NavigationRegion3D" index="2" instance=ExtResource("2_kxkp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.61153, 0, 1.60903)
+
+[node name="BouncyBigPillar3" parent="NavigationRegion3D" index="3" instance=ExtResource("2_kxkp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61225, 0, 9.07764)
 
 [node name="player_controller" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.18606)

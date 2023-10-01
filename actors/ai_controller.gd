@@ -11,7 +11,7 @@ const ATTACK_TRIGGER_DISTANCE = 3
 const ATTACK_OVER_SPEED = 1.5
 const DEFEND_SPEED_THRESHOLD = 7
 const DARKNESS_MARGIN = 1
-const TIME_SPENT_IN_STATE_THRESHOLD = 8
+const TIME_SPENT_IN_STATE_THRESHOLD = 4
 
 var light
 var player
@@ -89,7 +89,12 @@ func _get_wants_to_change_state():
 		#print("Good chance to attack player, change state")
 		return true
 		
-	if time_spent_in_state > TIME_SPENT_IN_STATE_THRESHOLD:
+	if (state != State.Hiding and 
+		time_spent_in_state > TIME_SPENT_IN_STATE_THRESHOLD):
+		#print("Too long in same state, change state")
+		return true
+		
+	if time_spent_in_state > TIME_SPENT_IN_STATE_THRESHOLD * 3:
 		#print("Too long in same state, change state")
 		return true
 
@@ -116,6 +121,7 @@ func _pick_new_state():
 
 func _change_state(new_state):
 	time_spent_in_state = 0
+	pawn.stop_charging()
 	state = new_state
 	enter_state[state].call()
 

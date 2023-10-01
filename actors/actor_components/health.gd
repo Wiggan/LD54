@@ -36,7 +36,7 @@ func heal(amount):
 		health = clamp(health + amount, 0, max_health)
 
 func take_damage(amount: float):
-	print("taking damage: ", amount)
+	#print("taking damage: ", amount)
 	if not alive:
 		return
 	amount = _pre_damage(amount)

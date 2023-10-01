@@ -4,6 +4,7 @@ extends RigidBody3D
 const MAX_CHARGE_TIME = 1.0
 const MAX_IMPULSE = 7
 
+signal collided_with_pawn
 signal released_attack
 signal died
 @onready var explosion_scene = preload("res://actors/actor_components/explosion.tscn")
@@ -26,6 +27,7 @@ signal died
 		directional_stuff.look_at(target)
 		directional_stuff.rotation *= Vector3(0, 1, 0)
 @export var overlay: StandardMaterial3D
+@export var mesh: Mesh
 @export var directional_force = 9
 @export var hp = 100.0:
 	set(value):
@@ -58,7 +60,8 @@ func stop_charging():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health.max_health = hp
-	mesh_instance_3d.material_overlay = overlay
+	mesh_instance_3d.mesh = mesh
+	mesh_instance_3d.material_override = overlay
 	moving_sfx.seek(randf_range(0, moving_sfx.stream.get_length()))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -102,4 +105,6 @@ func _on_body_entered(body):
 		hit_sfx.play()
 	
 	if body.is_in_group("Wall"):
-		body.pawn_collided(speed)
+		body.pawn_collided(speed, self)
+	elif body.is_in_group("Pawns"):
+		collided_with_pawn.emit()

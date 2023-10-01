@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://5o8b8edo05fy"]
+[gd_scene load_steps=6 format=3 uid="uid://5o8b8edo05fy"]
 
 [ext_resource type="Script" path="res://actors/player_controller.gd" id="1_adabw"]
 [ext_resource type="PackedScene" uid="uid://bir173lx67tx4" path="res://actors/pawn.tscn" id="2_hd3m4"]
+[ext_resource type="ArrayMesh" uid="uid://dykqtyfqva4y0" path="res://actors/meshes/pawns_King.res" id="3_lq2u6"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m6wmo"]
 size = Vector2(40, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ih0xd"]
+albedo_color = Color(0, 0.454902, 0.454902, 1)
+metallic_specular = 0.0
 
 [node name="player_controller" type="Node3D" node_paths=PackedStringArray("controlled_pawn")]
 script = ExtResource("1_adabw")
@@ -19,3 +24,5 @@ texture = SubResource("PlaceholderTexture2D_m6wmo")
 [node name="pawn" parent="." groups=["PlayerPawn"] instance=ExtResource("2_hd3m4")]
 top_level = false
 collision_layer = 3
+overlay = SubResource("StandardMaterial3D_ih0xd")
+mesh = ExtResource("3_lq2u6")

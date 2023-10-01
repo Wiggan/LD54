@@ -1,5 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5e5wmicbd2bh"]
+[gd_scene load_steps=3 format=3 uid="uid://b5e5wmicbd2bh"]
 
 [ext_resource type="PackedScene" uid="uid://df1mgrc77wowj" path="res://actors/ai_controller.tscn" id="1_eetwn"]
+[ext_resource type="ArrayMesh" uid="uid://bgo0s12ysmkv3" path="res://actors/meshes/pawns_Horse.res" id="2_fclr4"]
 
 [node name="RegularEnemy" instance=ExtResource("1_eetwn")]
+
+[node name="Pawn" parent="." index="0"]
+mesh = ExtResource("2_fclr4")

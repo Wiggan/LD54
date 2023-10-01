@@ -1,7 +1,4 @@
 Extra impact powerup spawning randomly
-BGM
 Pick an upgrade upon failure, to reduce frustration?
-Mood color indicator?
-Some in game tutorials
-floor boosters (arrow in the ground giving an impulse in that direction)
-Fix death better, explosion
+Limited inventory, get to choose to swap an upgrade after each round?
+

@@ -7,6 +7,7 @@ var enemies = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	AudioManager.play_song(AudioManager.Song.GAME)
 	navigation_region_3d.call_deferred("bake_navigation_mesh", true)
 	player = get_tree().get_nodes_in_group("PlayerPawn").front()
 	enemies = get_tree().get_nodes_in_group("EnemyPawn")
@@ -23,5 +24,5 @@ func enemy_died(enemy):
 	if enemies.is_empty():
 		AudioManager.level_cleared.play()
 		Transition.fade_and_call(get_tree().change_scene_to_file.bind(next_level))
-		print("WIN")
+
 
