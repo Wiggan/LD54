@@ -1,6 +1,14 @@
-[gd_resource type="AudioStreamRandomizer"]
-[ext_resource type="AudioStream" path="res://audio/hit.wav" id="92d2ca4040118cc434b8982bc54bf4e0efb21b49"]
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://bgh8tg45lr37e"]
+
+[ext_resource type="AudioStream" uid="uid://bcaxyhetfrgyk" path="res://audio/hit-01.wav" id="1_fx6ic"]
+[ext_resource type="AudioStream" uid="uid://cimgo1bl5uon3" path="res://audio/hit-02.wav" id="2_v1aj6"]
+[ext_resource type="AudioStream" uid="uid://cnrx0ln52c8yh" path="res://audio/hit-03.wav" id="3_7nvkq"]
+
 [resource]
-streams_count = 1
-stream_0/stream = ExtResource("92d2ca4040118cc434b8982bc54bf4e0efb21b49")
+streams_count = 3
+stream_0/stream = ExtResource("1_fx6ic")
 stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_v1aj6")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_7nvkq")
+stream_2/weight = 1.0

@@ -3,7 +3,7 @@ extends Control
 @onready var menu_animation = $Menu/MenuAnimation
 @onready var menu = $Menu
 @onready var background_level_loader = preload("res://transition/background_level_loader.tscn")
-@onready var black = $Black
+@onready var black = $"CanvasLayer/Black"
 
 var callback: Callable
 
@@ -22,7 +22,7 @@ func show_menu():
 
 func fade_and_call(callable):
 	var fade_tween = create_tween()
-	fade_tween.tween_property(black.material, "shader_parameter/lod", 10.0, 1.5)
+	fade_tween.tween_property(black.material, "shader_parameter/fader", 1.0, 1.2)
 	fade_tween.tween_callback(callable)
-	fade_tween.tween_property(black.material, "shader_parameter/lod", 0.0, 0.5)
+	fade_tween.tween_property(black.material, "shader_parameter/fader", 0.0, 1.2)
 	

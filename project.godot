@@ -44,6 +44,10 @@ movie_writer/fps=30
 
 enabled=PackedStringArray("res://addons/randomizer_generator/plugin.cfg")
 
+[gui]
+
+theme/custom_font="res://ui/fonts/vinque/vinque rg.otf"
+
 [input]
 
 ui_accept={

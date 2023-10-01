@@ -1,4 +1,3 @@
-Extra impact powerup spawning randomly
-Pick an upgrade upon failure, to reduce frustration?
-Limited inventory, get to choose to swap an upgrade after each round?
-
+Orchestrate the BGM?
+Make levels
+Menu

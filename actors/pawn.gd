@@ -101,8 +101,8 @@ func _on_health_healed(new_health):
 
 func _on_body_entered(body):
 	var speed = linear_velocity.length()
-	if not hit_sfx.playing:
-		hit_sfx.volume_db = lerp(-45, 0, speed/10)
+	if not hit_sfx.playing and speed > 3:
+		hit_sfx.volume_db = lerp(-9, 0, speed/7)
 		hit_sfx.play()
 	
 	if body.is_in_group("Wall"):

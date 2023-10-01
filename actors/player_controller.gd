@@ -5,7 +5,37 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	for slot in ["slot1", "slot2", "slot3"]:
+		var upgrade = GameManager.game_state["inventory"][slot]
+		if upgrade:
+			if upgrade["name"] == "Boost +1":
+				controlled_pawn.max_impulse += 1
+			elif upgrade["name"] == "Boost +2":
+				controlled_pawn.max_impulse += 2
+			elif upgrade["name"] == "Boost +3":
+				controlled_pawn.max_impulse += 3
+			elif upgrade["name"] == "Speed +1":
+				controlled_pawn.directional_force += 1
+			elif upgrade["name"] == "Speed +2":
+				controlled_pawn.directional_force += 2
+			elif upgrade["name"] == "Speed +3":
+				controlled_pawn.directional_force += 3
+			elif upgrade["name"] == "Defense +1":
+				controlled_pawn.damping_on_charge += 0.1
+			elif upgrade["name"] == "Defense +2":
+				controlled_pawn.damping_on_charge += 0.2
+			elif upgrade["name"] == "Defense +3":
+				controlled_pawn.damping_on_charge += 0.3
+			elif upgrade["name"] == "Health +1":
+				controlled_pawn.hp += 20
+			elif upgrade["name"] == "Health +2":
+				controlled_pawn.hp += 40
+			elif upgrade["name"] == "Health +3":
+				controlled_pawn.hp += 60
+	print("Pawn stats max_impulse: ", controlled_pawn.max_impulse,
+		  "\tdirectional_force: ", controlled_pawn.directional_force,
+		  "\tdamping_on_charge: ", controlled_pawn.damping_on_charge,
+		  "\thp: ", controlled_pawn.hp)
 
 func _unhandled_input(event):
 	if is_instance_valid(controlled_pawn):

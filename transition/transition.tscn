@@ -1,12 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://vrh3hi53dtkh"]
+[gd_scene load_steps=12 format=3 uid="uid://vrh3hi53dtkh"]
 
 [ext_resource type="Script" path="res://transition/transition_manager.gd" id="1_wf7mn"]
-[ext_resource type="Shader" path="res://transition/blur_background.gdshader" id="2_10sk7"]
+[ext_resource type="Shader" path="res://transition/dissolve.gdshader" id="2_7m6pv"]
 [ext_resource type="PackedScene" uid="uid://beqa0xujc2w2f" path="res://menu/menu_ui.tscn" id="3_sk8m6"]
 
+[sub_resource type="Gradient" id="Gradient_u7sup"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v4l1h"]
+frequency = 0.0115
+domain_warp_type = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ipc4y"]
+width = 480
+height = 270
+color_ramp = SubResource("Gradient_u7sup")
+noise = SubResource("FastNoiseLite_v4l1h")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aeprx"]
-shader = ExtResource("2_10sk7")
-shader_parameter/lod = 0.0
+shader = ExtResource("2_7m6pv")
+shader_parameter/fader = 0.0
+shader_parameter/noise = SubResource("NoiseTexture2D_ipc4y")
 
 [sub_resource type="Animation" id="Animation_2tdnb"]
 length = 0.001
@@ -170,10 +183,11 @@ libraries = {
 "": SubResource("AnimationLibrary_coqq7")
 }
 
-[node name="Black" type="ColorRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Black" type="ColorRect" parent="CanvasLayer"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_aeprx")
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
