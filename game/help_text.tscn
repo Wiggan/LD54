@@ -7,5 +7,6 @@ billboard = 1
 no_depth_test = true
 text = "Testing
 "
-font_size = 242
+font_size = 302
+outline_size = 52
 script = ExtResource("1_iivbw")

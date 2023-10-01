@@ -1,7 +1,24 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dcyvtvwqjqgrh"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dcyvtvwqjqgrh"]
 
 [ext_resource type="Texture2D" uid="uid://mctnw50djjpj" path="res://ui/button_9patch.png" id="1_mquda"]
 [ext_resource type="Texture2D" uid="uid://bahin0qx4l8mt" path="res://ui/panel_9patch.png" id="2_4x4e4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_voov5"]
+texture = ExtResource("1_mquda")
+texture_margin_left = 7.0
+texture_margin_top = 8.0
+texture_margin_right = 6.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(0, 0, 47, 48)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nls7d"]
+texture = ExtResource("1_mquda")
+texture_margin_left = 7.0
+texture_margin_top = 8.0
+texture_margin_right = 6.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(0, 0, 47, 48)
+modulate_color = Color(0.756863, 0.756863, 0.756863, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fevhc"]
 texture = ExtResource("1_mquda")
@@ -11,6 +28,15 @@ texture_margin_right = 6.0
 texture_margin_bottom = 7.0
 region_rect = Rect2(0, 0, 47, 48)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v5v51"]
+texture = ExtResource("1_mquda")
+texture_margin_left = 7.0
+texture_margin_top = 8.0
+texture_margin_right = 6.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(0, 0, 47, 48)
+modulate_color = Color(0.298039, 0.298039, 0.298039, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f7ur3"]
 texture = ExtResource("2_4x4e4")
 texture_margin_left = 26.0
@@ -19,11 +45,13 @@ texture_margin_right = 25.0
 texture_margin_bottom = 25.0
 
 [resource]
+Button/colors/icon_hover_pressed_color = Color(0.34902, 0.34902, 0.34902, 1)
+Button/colors/icon_pressed_color = Color(0.298039, 0.298039, 0.298039, 1)
 Button/font_sizes/font_size = 14
-Button/styles/focus = SubResource("StyleBoxTexture_fevhc")
-Button/styles/hover = SubResource("StyleBoxTexture_fevhc")
+Button/styles/focus = SubResource("StyleBoxTexture_voov5")
+Button/styles/hover = SubResource("StyleBoxTexture_nls7d")
 Button/styles/normal = SubResource("StyleBoxTexture_fevhc")
-Button/styles/pressed = SubResource("StyleBoxTexture_fevhc")
+Button/styles/pressed = SubResource("StyleBoxTexture_v5v51")
 Label/font_sizes/font_size = 12
 LinkButton/font_sizes/font_size = 12
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_f7ur3")

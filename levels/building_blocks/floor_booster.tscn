@@ -73,7 +73,6 @@ libraries = {
 
 [node name="BoostSFX" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_01xps")
-volume_db = 2.077
 pitch_scale = 0.75
 max_polyphony = 5
 bus = &"SFX"
